@@ -77,12 +77,24 @@ initialbearing = gets.to_s
 #get the NASA moves
 nasamoves = gets.chars.to_a
 
+#get the second rover initial bearing
+initialbearing2 = gets.to_s
+
+#get the second rover nasa moves
+nasamoves2 = gets.chars.to_a
+
 plateau1 = Plateau.new(upperright[0].to_i,upperright[2].to_i)
 plateau1.showcorner
 
 rover1=Rover.new(initialbearing[0].to_i,initialbearing[2].to_i,initialbearing[4].to_s)
 rover1.greet
 
-# #move the rover around
+rover2=Rover.new(initialbearing2[0].to_i,initialbearing2[2].to_i,initialbearing2[4].to_s)
+rover2.greet 
+
+#move the rovers around
 rover1.navigate(nasamoves)
 rover1.greet
+
+rover2.navigate(nasamoves2)
+rover2.greet
