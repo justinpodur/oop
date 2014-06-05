@@ -10,7 +10,7 @@ class Item
 	end
 
 	def greet
-		puts "I'm a #{name}, I cost #{price}.to_s, which is #{price*(1+salestaxrate+importduty)}.to_s after taxes"
+		puts "I'm a #{name}, I cost #{price.round(2)}, which is #{price*(1+salestaxrate+importduty).round(2)} after taxes"
 	end
 end
 
@@ -26,7 +26,6 @@ class Basket
 
 	def taxcalc
 		@itemlist.each do |item|
-			puts "loopin"
 			@totaltaxes+=item.price*(item.salestaxrate+item.importduty)
 			@totalprice+=item.price
 		end
@@ -34,7 +33,7 @@ class Basket
 
 	def receipt
 		taxcalc
-		puts "Your sales total is #{@totalprice} and you've paid #{@totaltaxes}. Remember taxes pay for services."
+		puts "Your sales total is #{@totalprice.round(2)} and you've paid #{@totaltaxes.round(2)} in taxes. Remember taxes pay for services."
 	end
 end
 
@@ -43,10 +42,14 @@ book=Item.new("book",12.49,0.1,0)
 book.greet
 
 cd=Item.new("music CD",16.49,0.1,0)
+cd.greet
 
-itemlist=[book,cd]
-puts itemlist[0].inspect
-puts itemlist[1].inspect
+chocolate=Item.new("choolate bar",0.85,0.1,0)
+chocolate.greet
+
+itemlist=[book,cd,chocolate]
+#puts itemlist[0].inspect
+#puts itemlist[1].inspect
 
 shop=Basket.new(itemlist)
 shop.receipt
