@@ -33,19 +33,23 @@ class Basket
 
 	def receipt
 		taxcalc
-		puts "Your sales total is #{@totalprice.round(2)} and you've paid #{@totaltaxes.round(2)} in taxes. Remember taxes pay for services."
+		@itemlist.each do |item|
+			puts "1 #{item.name}: #{item.price}"
+		end
+		puts "Sales taxes: #{@totaltaxes.round(2)}"
+		puts "Total is #{@totalprice.round(2)}"
 	end
 end
 
 book=Item.new("book",12.49,0.1,0)
 #book = ExemptItem.new("book",12.49,1)
-book.greet
+#book.greet
 
 cd=Item.new("music CD",16.49,0.1,0)
-cd.greet
+#cd.greet
 
-chocolate=Item.new("choolate bar",0.85,0.1,0)
-chocolate.greet
+chocolate=Item.new("chocolate bar",0.85,0.1,0)
+#chocolate.greet
 
 itemlist=[book,cd,chocolate]
 #puts itemlist[0].inspect
